@@ -86,3 +86,66 @@ var finances = [
 ['Jan-2017', 138230],
 ['Feb-2017', 671099]
 ];
+
+let months = finances.length;
+let total = 0;
+let change = 0;
+let average;
+let analysis;
+let net = 0;
+let netArray = [];
+let netChangesSum = 0;
+let least =['', 999999999999999];
+let greatest = ['', 0];
+
+for(let index = 0; index < finances.length; index ++){
+    for(let index2 = 0; index2 <finances[index].length; index2 ++){
+    if(typeof finances[index][index2] !== 'string'){
+        total = total + finances [index] [index2];
+        change = finances[index][index2] - net;
+        net = finances[index][index2];
+        netArray.push(change);
+
+        if(change > greatest [1]){
+            greatest = [finances[index] [0], finances[index][1]]
+        }
+
+        if(change < least[1]){
+            least = [finances[index] [0], finances[index][1]]
+        }
+    }
+    }
+}
+
+for(let index = 0; index< netArray.length; index ++){
+    netChangesSum = netChangesSum + netArray[index];
+}
+
+average = Math.round((netChangesSum / 86)*100) /100;
+
+analysis = 'Financial Analysis' + '\n' +
+'------------------' + '\n' +
+'Total Months: ' + months + '\n' +
+'Total: $' + total + '\n' +
+'Average Change: ' + average + '\n' +
+'Greatest Increase in Profit: ' + greatest[0] + ': $' + greatest[1] + '\n' +
+'Greatest Deacrease in Profit: ' + least[0] + ': $' + least[1] + '\n';
+
+console.log(analysis)
+
+
+
+
+
+
+
+//The net total amount of Profit/Losses over the entire period.
+
+//The average of the changes in Profit/Losses over the entire period.
+//You will need to track what the total change in profits is from month to month and then find the average.
+//(Total/Number of months)
+
+//The greatest increase in profits (date and amount) over the entire period.
+
+//The greatest decrease in losses (date and amount) over the entire period.
+
